@@ -110,31 +110,31 @@ tr:last-child td{border-bottom:none}tr:hover td{background:var(--Cl)}
   </div>
   <nav>
     <div class="ns">Principal</div>
-    <button class="ni on" onclick="go('dash')">🏠 Dashboard</button>
-    <button class="ni" onclick="go('reservas')">📋 Reservas</button>
-    <button class="ni" onclick="go('cal')">📅 Calendário</button>
-    <button class="ni" onclick="go('agenda')">🗓️ Agenda</button>
+    <button class="ni on" onclick="go('dash', this)">🏠 Dashboard</button>
+    <button class="ni" onclick="go('reservas', this)">📋 Reservas</button>
+    <button class="ni" onclick="go('cal', this)">📅 Calendário</button>
+    <button class="ni" onclick="go('agenda', this)">🗓️ Agenda</button>
     <div class="ns">Financeiro</div>
-    <button class="ni" onclick="go('fin')">💰 Recebimentos</button>
-    <button class="ni" onclick="go('lanc')">📒 Lançamentos</button>
-    <button class="ni" onclick="go('dre')">📊 DRE</button>
-    <button class="ni" onclick="go('nf')">🧾 Espelho NF</button>
+    <button class="ni" onclick="go('fin', this)">💰 Recebimentos</button>
+    <button class="ni" onclick="go('lanc', this)">📒 Lançamentos</button>
+    <button class="ni" onclick="go('dre', this)">📊 DRE</button>
+    <button class="ni" onclick="go('nf', this)">🧾 Espelho NF</button>
     <div class="ns">Operação</div>
-    <button class="ni" onclick="go('orc')">💼 Orçamento</button>
-    <button class="ni" onclick="go('rel')">📝 Relatórios</button>
-    <button class="ni" onclick="go('pops')">📌 POPs</button>
+    <button class="ni" onclick="go('orc', this)">💼 Orçamento</button>
+    <button class="ni" onclick="go('rel', this)">📝 Relatórios</button>
+    <button class="ni" onclick="go('pops', this)">📌 POPs</button>
     <div class="ns">Cadastros</div>
-    <button class="ni" onclick="go('tutores')">👥 Tutores e Gatos</button>
-    <button class="ni" onclick="go('autocad')">🔗 Autocadastro</button>
-    <button class="ni" onclick="go('pendentes')">⏳ Pendentes <span id="badge-pend" style="background:var(--A);color:#92680a;border-radius:10px;padding:1px 6px;font-size:10px;font-weight:600;margin-left:auto;display:none">0</span></button>
-    <button class="ni" onclick="go('servicos')">🛎️ Serviços</button>
-    <button class="ni" onclick="go('produtos')">🛍️ Produtos</button>
-    <button class="ni" onclick="go('insumos')">📦 Insumos</button>
-    <button class="ni" onclick="go('temps')">🌡️ Temporadas</button>
-    <button class="ni" onclick="go('contratos')">📄 Contratos</button>
+    <button class="ni" onclick="go('tutores', this)">👥 Tutores e Gatos</button>
+    <button class="ni" onclick="go('autocad', this)">🔗 Autocadastro</button>
+    <button class="ni" onclick="go('pendentes', this)">⏳ Pendentes <span id="badge-pend" style="background:var(--A);color:#92680a;border-radius:10px;padding:1px 6px;font-size:10px;font-weight:600;margin-left:auto;display:none">0</span></button>
+    <button class="ni" onclick="go('servicos', this)">🛎️ Serviços</button>
+    <button class="ni" onclick="go('produtos', this)">🛍️ Produtos</button>
+    <button class="ni" onclick="go('insumos', this)">📦 Insumos</button>
+    <button class="ni" onclick="go('temps', this)">🌡️ Temporadas</button>
+    <button class="ni" onclick="go('contratos', this)">📄 Contratos</button>
     <div class="ns">Config</div>
-    <button class="ni" onclick="go('empresa')">🏢 Empresa</button>
-    <button class="ni" onclick="go('pers')">🎨 Personalização</button>
+    <button class="ni" onclick="go('empresa', this)">🏢 Empresa</button>
+    <button class="ni" onclick="go('pers', this)">🎨 Personalização</button>
   </nav>
 </aside>
 <main class="main">
@@ -144,3 +144,72 @@ tr:last-child td{border-bottom:none}tr:hover td{background:var(--Cl)}
 </div>
 <div id="modal"></div>
 <script>
+function go(page, el){
+  document.getElementById('ptitle').innerText = page;
+
+  const pc = document.getElementById('pc');
+
+  const telas = {
+    dash: `
+      <div class="g4">
+        <div class="met">
+          <div class="ml">Reservas Hoje</div>
+          <div class="mv">4</div>
+        </div>
+        <div class="met">
+          <div class="ml">Gatos Hospedados</div>
+          <div class="mv">7</div>
+        </div>
+        <div class="met">
+          <div class="ml">Receita do Mês</div>
+          <div class="mv">R$ 12.450</div>
+        </div>
+        <div class="met">
+          <div class="ml">Pendências</div>
+          <div class="mv">2</div>
+        </div>
+      </div>
+    `,
+
+    reservas: `
+      <div class="card">
+        <h2>Reservas</h2>
+        <p class="mt8">Aqui aparecerão as reservas da MiauTopia.</p>
+      </div>
+    `,
+
+    cal: `
+      <div class="card">
+        <h2>Calendário</h2>
+        <p class="mt8">Calendário operacional.</p>
+      </div>
+    `,
+
+    agenda: `
+      <div class="card">
+        <h2>Agenda</h2>
+        <p class="mt8">Agenda diária da hospedagem.</p>
+      </div>
+    `
+  };
+
+  pc.innerHTML = telas[page] || `
+    <div class="card">
+      <h2>${page}</h2>
+      <p class="mt8">Tela em construção.</p>
+    </div>
+  `;
+
+  document.querySelectorAll('.ni').forEach(btn=>{
+    btn.classList.remove('on');
+  });
+
+  if(el){
+    el.classList.add('on');
+  }
+}
+
+go('dash');
+</script>
+</body>
+</html>
