@@ -1,215 +1,369 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MiauTopia — Sistema de Gestão</title>
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{--P:#c2607e;--Pl:#fdf0f4;--Pm:#f5c8d8;--V:#7dbf9e;--Vl:#eef7f2;--A:#f0c860;--Al:#fdf8e8;--C:#6b6570;--Cl:#f7f5f8;--Cb:#e8e4ec;--T:#2d2830;--Tm:#8a8090;--W:#fff;--F:#faf8fb}
-body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--F);color:var(--T);font-size:13.5px}
-.app{display:flex;min-height:100vh}
-.sb{width:210px;background:var(--W);border-right:1px solid var(--Cb);position:fixed;top:0;left:0;bottom:0;z-index:100;overflow-y:auto;display:flex;flex-direction:column}
-.logo{padding:15px 14px;border-bottom:1px solid var(--Cb)}
-.logo-n{font-size:17px;font-weight:700;color:var(--P)}.logo-s{font-size:10px;color:var(--Tm);text-transform:uppercase;letter-spacing:.05em}
-.ns{padding:7px 13px 3px;font-size:9.5px;font-weight:700;color:var(--Tm);text-transform:uppercase;letter-spacing:.08em}
-.ni{display:flex;align-items:center;gap:8px;padding:7px 15px;cursor:pointer;color:var(--C);font-size:12px;border:none;background:none;width:100%;text-align:left;transition:all .15s;border-left:2px solid transparent}
-.ni:hover{background:var(--Cl);color:var(--T)}.ni.on{background:var(--Pl);color:var(--P);font-weight:600;border-left-color:var(--P)}
-.main{margin-left:210px;flex:1;display:flex;flex-direction:column}
-.tb{background:var(--W);border-bottom:1px solid var(--Cb);padding:0 22px;height:50px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}
-.pt{font-size:14px;font-weight:600}.ct{padding:18px 22px}
-.card{background:var(--W);border:1px solid var(--Cb);border-radius:10px;padding:15px 19px}
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:11px}
-.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}
-.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
-.met{background:var(--W);border:1px solid var(--Cb);border-radius:9px;padding:12px 14px}
-.ml{font-size:10px;color:var(--Tm);text-transform:uppercase;letter-spacing:.04em;margin-bottom:3px}
-.mv{font-size:19px;font-weight:700}.ms{font-size:11px;color:var(--Tm);margin-top:2px}
-.fg{margin-bottom:11px}
-.fl{display:block;font-size:11px;font-weight:600;color:var(--C);margin-bottom:3px}
-.fc{width:100%;padding:7px 10px;border:1px solid var(--Cb);border-radius:7px;font-size:13px;color:var(--T);background:var(--W);outline:none;font-family:inherit;transition:border-color .15s}
-.fc:focus{border-color:var(--P)}.fc.ok{border-color:var(--V);background:var(--Vl)}.fc.err{border-color:#dc2626;background:#fff5f5}
-textarea.fc{resize:vertical}
-.btn{padding:6px 13px;border-radius:7px;font-size:12px;font-weight:500;cursor:pointer;border:none;transition:all .15s;display:inline-flex;align-items:center;gap:5px;font-family:inherit;white-space:nowrap}
-.bp{background:var(--P);color:#fff}.bs{background:var(--Cl);color:var(--T);border:1px solid var(--Cb)}.bd{background:#fee2e2;color:#b91c1c}.bv{background:var(--Vl);color:#2d7a54}.ba{background:#eef3fe;color:#4f8ef7}
-.sm2{padding:4px 8px;font-size:11px}
-.tw{overflow-x:auto}.tw table{width:100%;border-collapse:collapse;min-width:500px}
-th{font-size:10px;font-weight:700;color:var(--Tm);text-transform:uppercase;padding:7px 10px;border-bottom:1px solid var(--Cb);text-align:left;white-space:nowrap}
-td{padding:8px 10px;border-bottom:1px solid var(--Cb);font-size:12.5px;vertical-align:middle}
-tr:last-child td{border-bottom:none}tr:hover td{background:var(--Cl)}
-.bdg{display:inline-flex;align-items:center;padding:2px 7px;border-radius:20px;font-size:10.5px;font-weight:500}
-.bR{background:var(--Al);color:#92680a}.bCI{background:var(--Vl);color:#2d7a54}.bCO{background:#fee2e2;color:#b91c1c}.bCAN{background:var(--Cl);color:var(--C)}.bFIN{background:#ede9fe;color:#5b21b6}
-.mo{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;padding:14px;overflow-y:auto}
-.md{background:var(--W);border-radius:12px;padding:22px;width:660px;max-width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.2)}
-.mdL{width:820px}.mdXL{width:960px}
-.mtt{font-size:16px;font-weight:700;margin-bottom:16px}
-.mft{display:flex;gap:8px;justify-content:flex-end;margin-top:16px;padding-top:13px;border-top:1px solid var(--Cb)}
-.tabs{display:flex;border-bottom:1px solid var(--Cb);margin-bottom:14px;flex-wrap:wrap}
-.tab{padding:7px 13px;cursor:pointer;font-size:12.5px;border:none;background:none;color:var(--Tm);border-bottom:2px solid transparent;margin-bottom:-1px;font-family:inherit;transition:all .15s}
-.tab.on{color:var(--P);border-bottom-color:var(--P);font-weight:500}
-.emp{text-align:center;padding:32px;color:var(--Tm)}
-.fb{display:flex;justify-content:space-between;align-items:center}
-.fx{display:flex}.g8{gap:8px}.g16{gap:16px}
-.mt8{margin-top:8px}.mt12{margin-top:12px}.mt16{margin-top:16px}
-.mb8{margin-bottom:8px}.mb12{margin-bottom:12px}.mb16{margin-bottom:16px}
-.mu{color:var(--Tm)}.sm{font-size:11.5px}
-.sec{font-size:11px;font-weight:700;color:var(--P);margin:13px 0 8px;padding-bottom:4px;border-bottom:1px solid var(--Pm)}
-.pgb{height:5px;background:var(--Cb);border-radius:3px;overflow:hidden}.pgf{height:100%;background:var(--V);border-radius:3px;transition:width .3s}
-.ps{display:inline-flex;align-items:center;padding:2px 7px;border-radius:12px;font-size:10.5px;font-weight:500}
-.pQ{background:var(--Vl);color:#2d7a54}.pP{background:var(--Al);color:#92680a}.pN{background:#fee2e2;color:#b91c1c}
-.ar{display:flex;gap:3px;flex-wrap:nowrap}
-.cg{display:grid;grid-template-columns:90px repeat(31,minmax(19px,1fr));gap:1px;background:var(--Cb);border-radius:8px;overflow:hidden;font-size:10px}
-.ch{background:var(--Cl);padding:4px 2px;text-align:center;font-weight:600;color:var(--Tm);font-size:9px}
-.cb2{background:var(--W);padding:4px 7px;font-weight:500;font-size:10px}.cbt{font-size:8px;color:var(--Tm)}
-.cc2{background:var(--W);min-height:24px;display:flex;align-items:center;justify-content:center;padding:1px}
-.cch{border-radius:2px;padding:1px 2px;font-size:8px;font-weight:500;width:100%;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.cOC{background:var(--Pl);color:var(--P)}.cCI{background:var(--Vl);color:#2d7a54}.cCO{background:#fee2e2;color:#b91c1c}
-.cHJ{background:var(--P);color:#fff;font-weight:700}.cAL{background:var(--Al)}
-.rtag{background:var(--Vl);color:#2d7a54;border-radius:4px;padding:1px 6px;font-size:11px;font-weight:500}
-.dtag{background:#fee2e2;color:#b91c1c;border-radius:4px;padding:1px 6px;font-size:11px;font-weight:500}
-.dr{display:flex;justify-content:space-between;padding:6px 0;font-size:12.5px;border-bottom:1px solid var(--Cb)}
-.dr.tot{font-weight:700;font-size:14px;border-bottom:2px solid var(--P);color:var(--P)}
-.dr.sub{padding-left:14px;color:var(--Tm);font-size:12px}
-.dr.sec2{font-weight:600;background:var(--Cl);padding:5px 8px;border-radius:5px;margin-top:6px;border-bottom:none}
-.nf-doc{border:2px solid var(--Cb);border-radius:8px;padding:20px;font-size:12px;line-height:1.6}
-.nf-sec{border:1px solid var(--Cb);border-radius:6px;padding:10px 13px;margin-bottom:9px}
-.nf-t{font-size:10px;font-weight:700;color:var(--Tm);text-transform:uppercase;margin-bottom:7px}
-.nf-g{display:grid;grid-template-columns:1fr 1fr;gap:7px}
-.nf-i{display:flex;flex-direction:column;gap:1px}
-.nf-l{font-size:10px;color:var(--Tm)}.nf-v{font-size:12.5px;font-weight:500}
-.eb{height:6px;background:var(--Cb);border-radius:3px;margin-top:4px}.ef{height:100%;border-radius:3px}
-.pop-card{border:1px solid var(--Cb);border-radius:8px;padding:12px 14px;margin-bottom:9px}
-.pop-cat{display:inline-block;padding:2px 8px;border-radius:12px;font-size:11px;font-weight:500;background:var(--Vl);color:#2d7a54;margin-bottom:7px}
-.pop-step{display:flex;gap:9px;padding:5px 0;border-bottom:1px solid var(--Cb);font-size:12.5px;align-items:flex-start}
-.pop-num{width:20px;height:20px;border-radius:50%;background:var(--P);color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;margin-top:1px}
-.ag-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:1px;background:var(--Cb);border-radius:8px;overflow:hidden}
-.ag-h{background:var(--Cl);padding:6px 4px;text-align:center;font-size:11px;font-weight:600;color:var(--Tm)}
-.ag-d{background:var(--W);min-height:70px;padding:4px;cursor:pointer}
-.ag-d:hover{background:var(--Pl)}.ag-d.hj{background:var(--Pl)}
-.ag-dn{font-size:12px;font-weight:600;color:var(--Tm);margin-bottom:2px}
-.ag-d.hj .ag-dn{color:var(--P);font-weight:700}.ag-d.om .ag-dn{color:var(--Cb)}
-.ag-ev{border-radius:3px;padding:1px 4px;font-size:10px;margin-bottom:1px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.evR{background:var(--Al);color:#92680a}.evC{background:#eef3fe;color:#4f8ef7}
-.tp{border:1px solid var(--Cb);border-radius:8px;padding:11px 14px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
-.tA{border-left:3px solid var(--A)}.tB{border-left:3px solid var(--V)}
-.pend-card{border:1px solid var(--Cb);border-left:4px solid var(--A);border-radius:8px;padding:12px 14px;margin-bottom:9px}
-.cb-item{display:flex;align-items:center;gap:7px;padding:5px 9px;background:var(--Cl);border-radius:6px;cursor:pointer;font-size:12px;margin-bottom:5px}
-.step-bar{display:flex;justify-content:center;gap:4px;margin-bottom:14px}
-.step{width:28px;height:5px;border-radius:3px;background:var(--Cb)}
-.step.on{background:var(--P)}.step.dn{background:var(--V)}
-.fstep{display:none}.fstep.on{display:block}
-@media print{.sb,.tb,.no-print{display:none!important}.main{margin-left:0}body{background:#fff}}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MiauTopia Sistema</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    :root{
+      --rosa:#eb3e81;
+      --rosa-light:#fff0f6;
+      --amarelo:#ebdb3e;
+      --cinza:#6b6570;
+      --cinza-light:#f5f5f7;
+      --borda:#e6e2e8;
+      --texto:#2d2830;
+      --verde:#7dbf9e;
+      --branco:#ffffff;
+    }
+
+    body{
+      font-family:Segoe UI, sans-serif;
+      background:var(--cinza-light);
+      color:var(--texto);
+    }
+
+    .app{
+      display:flex;
+      min-height:100vh;
+    }
+
+    /* SIDEBAR */
+
+    .sidebar{
+      width:260px;
+      background:var(--branco);
+      border-right:1px solid var(--borda);
+      padding:24px 0;
+      overflow-y:auto;
+      position:fixed;
+      top:0;
+      left:0;
+      bottom:0;
+    }
+
+    .logo{
+      padding:0 24px 24px;
+      border-bottom:1px solid var(--borda);
+      margin-bottom:20px;
+    }
+
+    .logo h1{
+      font-size:22px;
+      color:var(--rosa);
+    }
+
+    .logo p{
+      font-size:12px;
+      color:var(--cinza);
+      margin-top:4px;
+    }
+
+    .menu-group{
+      margin-bottom:24px;
+    }
+
+    .menu-title{
+      padding:0 24px;
+      margin-bottom:10px;
+      font-size:11px;
+      text-transform:uppercase;
+      color:#999;
+      font-weight:700;
+      letter-spacing:.08em;
+    }
+
+    .menu-item{
+      display:block;
+      width:100%;
+      padding:11px 24px;
+      border:none;
+      background:none;
+      text-align:left;
+      cursor:pointer;
+      color:var(--cinza);
+      font-size:14px;
+      transition:.2s;
+    }
+
+    .menu-item:hover{
+      background:var(--rosa-light);
+      color:var(--rosa);
+    }
+
+    /* MAIN */
+
+    .main{
+      margin-left:260px;
+      flex:1;
+    }
+
+    .topbar{
+      height:70px;
+      background:var(--branco);
+      border-bottom:1px solid var(--borda);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 32px;
+      position:sticky;
+      top:0;
+      z-index:10;
+    }
+
+    .topbar h2{
+      font-size:20px;
+    }
+
+    .content{
+      padding:32px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:18px;
+    }
+
+    .card{
+      background:var(--branco);
+      border:1px solid var(--borda);
+      border-radius:16px;
+      padding:20px;
+      min-height:140px;
+    }
+
+    .card h3{
+      margin-bottom:12px;
+      color:var(--rosa);
+      font-size:16px;
+    }
+
+    .card p{
+      font-size:14px;
+      line-height:1.5;
+      color:var(--cinza);
+    }
+
+    .badge{
+      display:inline-block;
+      padding:4px 10px;
+      border-radius:999px;
+      background:var(--rosa-light);
+      color:var(--rosa);
+      font-size:11px;
+      font-weight:600;
+      margin-top:12px;
+    }
+
+    @media(max-width:900px){
+
+      .sidebar{
+        width:100%;
+        position:relative;
+        height:auto;
+      }
+
+      .main{
+        margin-left:0;
+      }
+
+      .app{
+        flex-direction:column;
+      }
+
+    }
+
+  </style>
 </head>
+
 <body>
+
 <div class="app">
-<aside class="sb" id="sidebar">
-  <div class="logo">
-    <div class="logo-n" id="logo-n">MiauTopia</div>
-    <div class="logo-s" id="logo-s">Gestão e Controle</div>
-  </div>
-  <nav>
-    <div class="ns">Principal</div>
-    <button class="ni on" onclick="go('dash', this)">🏠 Dashboard</button>
-    <button class="ni" onclick="go('reservas', this)">📋 Reservas</button>
-    <button class="ni" onclick="go('cal', this)">📅 Calendário</button>
-    <button class="ni" onclick="go('agenda', this)">🗓️ Agenda</button>
-    <div class="ns">Financeiro</div>
-    <button class="ni" onclick="go('fin', this)">💰 Recebimentos</button>
-    <button class="ni" onclick="go('lanc', this)">📒 Lançamentos</button>
-    <button class="ni" onclick="go('dre', this)">📊 DRE</button>
-    <button class="ni" onclick="go('nf', this)">🧾 Espelho NF</button>
-    <div class="ns">Operação</div>
-    <button class="ni" onclick="go('orc', this)">💼 Orçamento</button>
-    <button class="ni" onclick="go('rel', this)">📝 Relatórios Diários</button>
-    <button class="ni" onclick="go('pops', this)">📌 POPs</button>
-    <div class="ns">Cadastros</div>
-    <button class="ni" onclick="go('tutores', this)">👥 Tutores/Gatos</button>
-    <button class="ni" onclick="go('autocad', this)">🔗 Autocadastro</button>
-    <button class="ni" onclick="go('pendentes', this)">⏳ Pendentes <span id="badge-pend" style="background:var(--A);color:#92680a;border-radius:10px;padding:1px 6px;font-size:10px;font-weight:600;margin-left:auto;display:none">0</span></button>
-    <button class="ni" onclick="go('servicos', this)">🛎️ Serviços</button>
-    <button class="ni" onclick="go('produtos', this)">🛍️ Produtos</button>
-    <button class="ni" onclick="go('insumos', this)">📦 Insumos</button>
-    <button class="ni" onclick="go('temps', this)">🌡️ Temporadas</button>
-    <button class="ni" onclick="go('contratos', this)">📄 Contratos</button>
-    <div class="ns">Config</div>
-    <button class="ni" onclick="go('empresa', this)">🏢 Empresa</button>
-    <button class="ni" onclick="go('pers', this)">🎨 Personalização</button>
-  </nav>
-</aside>
-<main class="main">
-  <div class="tb"><div class="pt" id="ptitle">Dashboard</div><div class="fx g8" id="pact"></div></div>
-  <div class="ct" id="pc"></div>
-</main>
-</div>
-<div id="modal"></div>
-<script>
-function go(page, el){
-  document.getElementById('ptitle').innerText = page;
 
-  const pc = document.getElementById('pc');
+  <!-- SIDEBAR -->
 
-  const telas = {
-    dash: `
-      <div class="g4">
-        <div class="met">
-          <div class="ml">Reservas Hoje</div>
-          <div class="mv">4</div>
-        </div>
-        <div class="met">
-          <div class="ml">Gatos Hospedados</div>
-          <div class="mv">7</div>
-        </div>
-        <div class="met">
-          <div class="ml">Receita do Mês</div>
-          <div class="mv">R$ 12.450</div>
-        </div>
-        <div class="met">
-          <div class="ml">Pendências</div>
-          <div class="mv">2</div>
-        </div>
-      </div>
-    `,
+  <aside class="sidebar">
 
-    reservas: `
-      <div class="card">
-        <h2>Reservas</h2>
-        <p class="mt8">Aqui aparecerão as reservas da MiauTopia.</p>
-      </div>
-    `,
-
-    cal: `
-      <div class="card">
-        <h2>Calendário</h2>
-        <p class="mt8">Calendário operacional.</p>
-      </div>
-    `,
-
-    agenda: `
-      <div class="card">
-        <h2>Agenda</h2>
-        <p class="mt8">Agenda diária da hospedagem.</p>
-      </div>
-    `
-  };
-
-  pc.innerHTML = telas[page] || `
-    <div class="card">
-      <h2>${page}</h2>
-      <p class="mt8">Tela em construção.</p>
+    <div class="logo">
+      <h1>MiauTopia</h1>
+      <p>Sistema Operacional Premium</p>
     </div>
-  `;
 
-  document.querySelectorAll('.ni').forEach(btn=>{
-    btn.classList.remove('on');
-  });
+    <!-- PRINCIPAL -->
 
-  if(el){
-    el.classList.add('on');
-  }
-}
+    <div class="menu-group">
+      <div class="menu-title">Principal</div>
 
-go('dash');
-</script>
+      <button class="menu-item">Dashboard</button>
+      <button class="menu-item">Agenda</button>
+      <button class="menu-item">Painel TV</button>
+      <button class="menu-item">Pendentes</button>
+      <button class="menu-item">Assinaturas</button>
+      <button class="menu-item">Grupo WhatsApp</button>
+      <button class="menu-item">Serviços do Dia</button>
+      <button class="menu-item">Suporte</button>
+    </div>
+
+    <!-- FINANCEIRO -->
+
+    <div class="menu-group">
+      <div class="menu-title">Financeiro</div>
+
+      <button class="menu-item">Dashboard Financeiro</button>
+      <button class="menu-item">Títulos</button>
+      <button class="menu-item">Faturas</button>
+      <button class="menu-item">Demonstrativos</button>
+      <button class="menu-item">Cadastros Financeiros</button>
+      <button class="menu-item">Comissões</button>
+      <button class="menu-item">Cobranças</button>
+      <button class="menu-item">Notas Fiscais</button>
+      <button class="menu-item">Espelho NF</button>
+      <button class="menu-item">Inadimplência</button>
+    </div>
+
+    <!-- OPERAÇÃO DIÁRIA -->
+
+    <div class="menu-group">
+      <div class="menu-title">Operação Diária</div>
+
+      <button class="menu-item">Entrada</button>
+      <button class="menu-item">Hotel / Creche / Cat Sitting</button>
+      <button class="menu-item">Manejo Diário</button>
+      <button class="menu-item">Relatórios Diários</button>
+      <button class="menu-item">Comunicação</button>
+      <button class="menu-item">Checklists</button>
+    </div>
+
+    <!-- OPERAÇÃO GERENCIAL -->
+
+    <div class="menu-group">
+      <div class="menu-title">Operação Gerencial</div>
+
+      <button class="menu-item">Simulação</button>
+      <button class="menu-item">Relatórios</button>
+      <button class="menu-item">Relatórios Extras</button>
+    </div>
+
+    <!-- CADASTROS -->
+
+    <div class="menu-group">
+      <div class="menu-title">Cadastros</div>
+
+      <button class="menu-item">Clientes / Gatos</button>
+      <button class="menu-item">Serviços</button>
+      <button class="menu-item">Produtos</button>
+      <button class="menu-item">Aplicações</button>
+      <button class="menu-item">Planos</button>
+      <button class="menu-item">Checklists</button>
+      <button class="menu-item">Quartos / Baias</button>
+      <button class="menu-item">Babás / Monitores</button>
+      <button class="menu-item">Documentos</button>
+      <button class="menu-item">Origem do Cliente</button>
+      <button class="menu-item">Formulário Cliente</button>
+      <button class="menu-item">Formulário Gato</button>
+      <button class="menu-item">Calendário</button>
+      <button class="menu-item">POPs</button>
+      <button class="menu-item">Compliance</button>
+      <button class="menu-item">Escalas</button>
+      <button class="menu-item">Bloqueios</button>
+      <button class="menu-item">Manutenção</button>
+    </div>
+
+    <!-- CONFIGURAÇÕES -->
+
+    <div class="menu-group">
+      <div class="menu-title">Configurações</div>
+
+      <button class="menu-item">Dados da Empresa</button>
+      <button class="menu-item">Usuários</button>
+      <button class="menu-item">Cupons</button>
+      <button class="menu-item">Personalização</button>
+      <button class="menu-item">Integrações</button>
+    </div>
+
+    <!-- ESTOQUE -->
+
+    <div class="menu-group">
+      <div class="menu-title">Estoque</div>
+
+      <button class="menu-item">Movimentação</button>
+      <button class="menu-item">Entrada</button>
+      <button class="menu-item">Saída</button>
+      <button class="menu-item">Relatórios</button>
+      <button class="menu-item">Fornecedores</button>
+      <button class="menu-item">Scanntech</button>
+    </div>
+
+    <!-- AUTOMAÇÕES -->
+
+    <div class="menu-group">
+      <div class="menu-title">Automações</div>
+
+      <button class="menu-item">WhatsApp</button>
+      <button class="menu-item">E-mails</button>
+      <button class="menu-item">Relatórios Automáticos</button>
+      <button class="menu-item">Alertas</button>
+      <button class="menu-item">Fluxos</button>
+    </div>
+
+  </aside>
+
+  <!-- MAIN -->
+
+  <main class="main">
+
+    <div class="topbar">
+      <h2>Dashboard Principal</h2>
+    </div>
+
+    <div class="content">
+
+      <div class="grid">
+
+        <div class="card">
+          <h3>Dashboard</h3>
+          <p>
+            Painel operacional principal totalmente modular e personalizável.
+          </p>
+          <span class="badge">Core do Sistema</span>
+        </div>
+
+        <div class="card">
+          <h3>Operação Diária</h3>
+          <p>
+            Controle completo de manejo, reservas, comunicação e acompanhamento dos gatos ativos.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Financeiro</h3>
+          <p>
+            Fluxo de caixa, títulos, faturas, DRE, cobranças e inadimplência.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Automações</h3>
+          <p>
+            Fluxos inteligentes de comunicação, relatórios automáticos e alertas operacionais.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+</div>
+
 </body>
 </html>
