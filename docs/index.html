@@ -6,6 +6,7 @@
   <title>MiauTopia Sistema</title>
 
   <style>
+
     *{
       margin:0;
       padding:0;
@@ -98,6 +99,13 @@
       color:var(--rosa);
     }
 
+    .menu-item.active{
+      background:var(--rosa-light);
+      color:var(--rosa);
+      font-weight:600;
+      border-left:4px solid var(--rosa);
+    }
+
     /* MAIN */
 
     .main{
@@ -163,6 +171,36 @@
       margin-top:12px;
     }
 
+    .module-box{
+      background:var(--branco);
+      border:1px solid var(--borda);
+      border-radius:18px;
+      padding:28px;
+    }
+
+    .module-box h3{
+      color:var(--rosa);
+      margin-bottom:12px;
+      font-size:24px;
+    }
+
+    .module-box p{
+      color:var(--cinza);
+      line-height:1.7;
+      font-size:15px;
+    }
+
+    .coming{
+      margin-top:20px;
+      padding:10px 14px;
+      border-radius:12px;
+      background:var(--rosa-light);
+      color:var(--rosa);
+      display:inline-block;
+      font-size:13px;
+      font-weight:600;
+    }
+
     @media(max-width:900px){
 
       .sidebar{
@@ -202,14 +240,14 @@
     <div class="menu-group">
       <div class="menu-title">Principal</div>
 
-      <button class="menu-item">Dashboard</button>
-      <button class="menu-item">Agenda</button>
-      <button class="menu-item">Painel TV</button>
-      <button class="menu-item">Pendentes</button>
-      <button class="menu-item">Assinaturas</button>
-      <button class="menu-item">Grupo WhatsApp</button>
-      <button class="menu-item">Serviços do Dia</button>
-      <button class="menu-item">Suporte</button>
+      <button class="menu-item active" onclick="openModule(event,'Dashboard')">Dashboard</button>
+      <button class="menu-item" onclick="openModule(event,'Agenda')">Agenda</button>
+      <button class="menu-item" onclick="openModule(event,'Painel TV')">Painel TV</button>
+      <button class="menu-item" onclick="openModule(event,'Pendentes')">Pendentes</button>
+      <button class="menu-item" onclick="openModule(event,'Assinaturas')">Assinaturas</button>
+      <button class="menu-item" onclick="openModule(event,'Grupo WhatsApp')">Grupo WhatsApp</button>
+      <button class="menu-item" onclick="openModule(event,'Serviços do Dia')">Serviços do Dia</button>
+      <button class="menu-item" onclick="openModule(event,'Suporte')">Suporte</button>
     </div>
 
     <!-- FINANCEIRO -->
@@ -217,16 +255,16 @@
     <div class="menu-group">
       <div class="menu-title">Financeiro</div>
 
-      <button class="menu-item">Dashboard Financeiro</button>
-      <button class="menu-item">Títulos</button>
-      <button class="menu-item">Faturas</button>
-      <button class="menu-item">Demonstrativos</button>
-      <button class="menu-item">Cadastros Financeiros</button>
-      <button class="menu-item">Comissões</button>
-      <button class="menu-item">Cobranças</button>
-      <button class="menu-item">Notas Fiscais</button>
-      <button class="menu-item">Espelho NF</button>
-      <button class="menu-item">Inadimplência</button>
+      <button class="menu-item" onclick="openModule(event,'Dashboard Financeiro')">Dashboard Financeiro</button>
+      <button class="menu-item" onclick="openModule(event,'Títulos')">Títulos</button>
+      <button class="menu-item" onclick="openModule(event,'Faturas')">Faturas</button>
+      <button class="menu-item" onclick="openModule(event,'Demonstrativos')">Demonstrativos</button>
+      <button class="menu-item" onclick="openModule(event,'Cadastros Financeiros')">Cadastros Financeiros</button>
+      <button class="menu-item" onclick="openModule(event,'Comissões')">Comissões</button>
+      <button class="menu-item" onclick="openModule(event,'Cobranças')">Cobranças</button>
+      <button class="menu-item" onclick="openModule(event,'Notas Fiscais')">Notas Fiscais</button>
+      <button class="menu-item" onclick="openModule(event,'Espelho NF')">Espelho NF</button>
+      <button class="menu-item" onclick="openModule(event,'Inadimplência')">Inadimplência</button>
     </div>
 
     <!-- OPERAÇÃO DIÁRIA -->
@@ -234,12 +272,12 @@
     <div class="menu-group">
       <div class="menu-title">Operação Diária</div>
 
-      <button class="menu-item">Entrada</button>
-      <button class="menu-item">Hotel / Creche / Cat Sitting</button>
-      <button class="menu-item">Manejo Diário</button>
-      <button class="menu-item">Relatórios Diários</button>
-      <button class="menu-item">Comunicação</button>
-      <button class="menu-item">Checklists</button>
+      <button class="menu-item" onclick="openModule(event,'Entrada')">Entrada</button>
+      <button class="menu-item" onclick="openModule(event,'Hotel / Creche / Cat Sitting')">Hotel / Creche / Cat Sitting</button>
+      <button class="menu-item" onclick="openModule(event,'Manejo Diário')">Manejo Diário</button>
+      <button class="menu-item" onclick="openModule(event,'Relatórios Diários')">Relatórios Diários</button>
+      <button class="menu-item" onclick="openModule(event,'Comunicação')">Comunicação</button>
+      <button class="menu-item" onclick="openModule(event,'Checklists')">Checklists</button>
     </div>
 
     <!-- OPERAÇÃO GERENCIAL -->
@@ -247,9 +285,9 @@
     <div class="menu-group">
       <div class="menu-title">Operação Gerencial</div>
 
-      <button class="menu-item">Simulação</button>
-      <button class="menu-item">Relatórios</button>
-      <button class="menu-item">Relatórios Extras</button>
+      <button class="menu-item" onclick="openModule(event,'Simulação')">Simulação</button>
+      <button class="menu-item" onclick="openModule(event,'Relatórios')">Relatórios</button>
+      <button class="menu-item" onclick="openModule(event,'Relatórios Extras')">Relatórios Extras</button>
     </div>
 
     <!-- CADASTROS -->
@@ -257,36 +295,36 @@
     <div class="menu-group">
       <div class="menu-title">Cadastros</div>
 
-      <button class="menu-item">Clientes / Gatos</button>
-      <button class="menu-item">Serviços</button>
-      <button class="menu-item">Produtos</button>
-      <button class="menu-item">Aplicações</button>
-      <button class="menu-item">Planos</button>
-      <button class="menu-item">Checklists</button>
-      <button class="menu-item">Quartos / Baias</button>
-      <button class="menu-item">Babás / Monitores</button>
-      <button class="menu-item">Documentos</button>
-      <button class="menu-item">Origem do Cliente</button>
-      <button class="menu-item">Formulário Cliente</button>
-      <button class="menu-item">Formulário Gato</button>
-      <button class="menu-item">Calendário</button>
-      <button class="menu-item">POPs</button>
-      <button class="menu-item">Compliance</button>
-      <button class="menu-item">Escalas</button>
-      <button class="menu-item">Bloqueios</button>
-      <button class="menu-item">Manutenção</button>
+      <button class="menu-item" onclick="openModule(event,'Clientes / Gatos')">Clientes / Gatos</button>
+      <button class="menu-item" onclick="openModule(event,'Serviços')">Serviços</button>
+      <button class="menu-item" onclick="openModule(event,'Produtos')">Produtos</button>
+      <button class="menu-item" onclick="openModule(event,'Aplicações')">Aplicações</button>
+      <button class="menu-item" onclick="openModule(event,'Planos')">Planos</button>
+      <button class="menu-item" onclick="openModule(event,'Checklists')">Checklists</button>
+      <button class="menu-item" onclick="openModule(event,'Quartos / Baias')">Quartos / Baias</button>
+      <button class="menu-item" onclick="openModule(event,'Babás / Monitores')">Babás / Monitores</button>
+      <button class="menu-item" onclick="openModule(event,'Documentos')">Documentos</button>
+      <button class="menu-item" onclick="openModule(event,'Origem do Cliente')">Origem do Cliente</button>
+      <button class="menu-item" onclick="openModule(event,'Formulário Cliente')">Formulário Cliente</button>
+      <button class="menu-item" onclick="openModule(event,'Formulário Gato')">Formulário Gato</button>
+      <button class="menu-item" onclick="openModule(event,'Calendário')">Calendário</button>
+      <button class="menu-item" onclick="openModule(event,'POPs')">POPs</button>
+      <button class="menu-item" onclick="openModule(event,'Compliance')">Compliance</button>
+      <button class="menu-item" onclick="openModule(event,'Escalas')">Escalas</button>
+      <button class="menu-item" onclick="openModule(event,'Bloqueios')">Bloqueios</button>
+      <button class="menu-item" onclick="openModule(event,'Manutenção')">Manutenção</button>
     </div>
 
-    <!-- CONFIGURAÇÕES -->
+    <!-- CONFIG -->
 
     <div class="menu-group">
       <div class="menu-title">Configurações</div>
 
-      <button class="menu-item">Dados da Empresa</button>
-      <button class="menu-item">Usuários</button>
-      <button class="menu-item">Cupons</button>
-      <button class="menu-item">Personalização</button>
-      <button class="menu-item">Integrações</button>
+      <button class="menu-item" onclick="openModule(event,'Dados da Empresa')">Dados da Empresa</button>
+      <button class="menu-item" onclick="openModule(event,'Usuários')">Usuários</button>
+      <button class="menu-item" onclick="openModule(event,'Cupons')">Cupons</button>
+      <button class="menu-item" onclick="openModule(event,'Personalização')">Personalização</button>
+      <button class="menu-item" onclick="openModule(event,'Integrações')">Integrações</button>
     </div>
 
     <!-- ESTOQUE -->
@@ -294,12 +332,12 @@
     <div class="menu-group">
       <div class="menu-title">Estoque</div>
 
-      <button class="menu-item">Movimentação</button>
-      <button class="menu-item">Entrada</button>
-      <button class="menu-item">Saída</button>
-      <button class="menu-item">Relatórios</button>
-      <button class="menu-item">Fornecedores</button>
-      <button class="menu-item">Scanntech</button>
+      <button class="menu-item" onclick="openModule(event,'Movimentação')">Movimentação</button>
+      <button class="menu-item" onclick="openModule(event,'Entrada de Estoque')">Entrada</button>
+      <button class="menu-item" onclick="openModule(event,'Saída de Estoque')">Saída</button>
+      <button class="menu-item" onclick="openModule(event,'Relatórios de Estoque')">Relatórios</button>
+      <button class="menu-item" onclick="openModule(event,'Fornecedores')">Fornecedores</button>
+      <button class="menu-item" onclick="openModule(event,'Scanntech')">Scanntech</button>
     </div>
 
     <!-- AUTOMAÇÕES -->
@@ -307,11 +345,11 @@
     <div class="menu-group">
       <div class="menu-title">Automações</div>
 
-      <button class="menu-item">WhatsApp</button>
-      <button class="menu-item">E-mails</button>
-      <button class="menu-item">Relatórios Automáticos</button>
-      <button class="menu-item">Alertas</button>
-      <button class="menu-item">Fluxos</button>
+      <button class="menu-item" onclick="openModule(event,'WhatsApp')">WhatsApp</button>
+      <button class="menu-item" onclick="openModule(event,'E-mails')">E-mails</button>
+      <button class="menu-item" onclick="openModule(event,'Relatórios Automáticos')">Relatórios Automáticos</button>
+      <button class="menu-item" onclick="openModule(event,'Alertas')">Alertas</button>
+      <button class="menu-item" onclick="openModule(event,'Fluxos')">Fluxos</button>
     </div>
 
   </aside>
@@ -321,10 +359,10 @@
   <main class="main">
 
     <div class="topbar">
-      <h2>Dashboard Principal</h2>
+      <h2 id="pageTitle">Dashboard</h2>
     </div>
 
-    <div class="content">
+    <div class="content" id="contentArea">
 
       <div class="grid">
 
@@ -364,6 +402,46 @@
   </main>
 
 </div>
+
+<script>
+
+function openModule(event,module){
+
+  // remove active
+  document.querySelectorAll('.menu-item').forEach(item=>{
+    item.classList.remove('active')
+  })
+
+  // active atual
+  event.currentTarget.classList.add('active')
+
+  // muda titulo
+  document.getElementById('pageTitle').innerText = module
+
+  // muda conteúdo
+  document.getElementById('contentArea').innerHTML = `
+
+    <div class="module-box">
+
+      <h3>${module}</h3>
+
+      <p>
+        Este módulo já está estruturado na arquitetura principal do sistema MiauTopia.
+        <br><br>
+        Aqui futuramente entrarão:
+        cadastros, tabelas, dashboards, automações, relatórios, integrações e regras operacionais específicas.
+      </p>
+
+      <div class="coming">
+        Módulo em desenvolvimento
+      </div>
+
+    </div>
+
+  `
+}
+
+</script>
 
 </body>
 </html>
