@@ -724,290 +724,229 @@ function abrirCadastroServico(){
 
     <div class="module-box">
 
+      <h3 style="margin-bottom:8px;">Novo Serviço</h3>
+
+      <p style="margin-bottom:24px;">
+        Cadastro completo do serviço operacional.
+      </p>
+
       <div style="
-        display:flex;
-        justify-content:space-between;
-        align-items:center;
-        margin-bottom:24px;
+        display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+        gap:18px;
       ">
 
         <div>
+          <label>Descrição</label>
 
-          <h3>Novo Serviço</h3>
+          <input
+            id="novoServicoDescricao"
+            type="text"
+            placeholder="Ex: Hospedagem Premium"
+            style="
+              width:100%;
+              margin-top:8px;
+              padding:12px;
+              border:1px solid var(--borda);
+              border-radius:12px;
+            ">
+        </div>
 
-          <p style="margin-top:8px;">
-            Cadastro completo do serviço operacional.
-          </p>
+        <div>
+          <label>Valor (R$)</label>
+
+          <input
+            id="novoServicoValor"
+            type="number"
+            placeholder="0,00"
+            style="
+              width:100%;
+              margin-top:8px;
+              padding:12px;
+              border:1px solid var(--borda);
+              border-radius:12px;
+            ">
+        </div>
+
+        <div>
+          <label>Comissão (%)</label>
+
+          <input
+            id="novoServicoComissao"
+            type="number"
+            placeholder="0"
+            style="
+              width:100%;
+              margin-top:8px;
+              padding:12px;
+              border:1px solid var(--borda);
+              border-radius:12px;
+            ">
+        </div>
+
+        <div>
+          <label>Tipo</label>
+
+          <select
+            id="novoServicoTipo"
+            style="
+              width:100%;
+              margin-top:8px;
+              padding:12px;
+              border:1px solid var(--borda);
+              border-radius:12px;
+            ">
+
+            <option>Serviço Avulso</option>
+            <option>Diária/Pernoite Hotel</option>
+            <option>Creche</option>
+            <option>Home Care</option>
+            <option>Pet Sitting</option>
+            <option>Recreação / Dog Walker</option>
+            <option>Táxi Pet</option>
+
+          </select>
+        </div>
+
+        <div>
+          <label>Status</label>
+
+          <select
+            id="novoServicoStatus"
+            style="
+              width:100%;
+              margin-top:8px;
+              padding:12px;
+              border:1px solid var(--borda);
+              border-radius:12px;
+            ">
+
+            <option>Ativo</option>
+            <option>Inativo</option>
+            <option>Arquivado</option>
+
+          </select>
+        </div>
+
+        <div>
+          <label>Tipo de Conta</label>
+
+          <select
+            id="novoServicoConta"
+            style="
+              width:100%;
+              margin-top:8px;
+              padding:12px;
+              border:1px solid var(--borda);
+              border-radius:12px;
+            ">
+
+            <option>Receita Operacional</option>
+            <option>Receita Recorrente</option>
+
+          </select>
+        </div>
+
+        <div>
+          <label>Agendamento WEB?</label>
+
+          <select
+            id="novoServicoWeb"
+            style="
+              width:100%;
+              margin-top:8px;
+              padding:12px;
+              border:1px solid var(--borda);
+              border-radius:12px;
+            ">
+
+            <option>Sim</option>
+            <option selected>Não</option>
+
+          </select>
+        </div>
+
+        <div>
+          <label>Serviço Recorrente?</label>
+
+          <select
+            id="servicoRecorrente"
+            onchange="toggleRecorrencia()"
+            style="
+              width:100%;
+              margin-top:8px;
+              padding:12px;
+              border:1px solid var(--borda);
+              border-radius:12px;
+            ">
+
+            <option value="nao">Não</option>
+            <option value="sim">Sim</option>
+
+          </select>
+        </div>
+
+        <div id="boxFrequencia" style="display:none;">
+
+          <label>Frequência</label>
+
+          <select
+            id="novoServicoFrequencia"
+            style="
+              width:100%;
+              margin-top:8px;
+              padding:12px;
+              border:1px solid var(--borda);
+              border-radius:12px;
+            ">
+
+            <option>Mensal</option>
+            <option>Semanal</option>
+            <option>Anual</option>
+
+          </select>
 
         </div>
 
       </div>
 
+      <div style="margin-top:24px;">
+
+        <label>Observações</label>
+
+        <textarea
+          id="novoServicoObs"
+          rows="5"
+          style="
+            width:100%;
+            margin-top:8px;
+            padding:12px;
+            border:1px solid var(--borda);
+            border-radius:12px;
+          "
+        ></textarea>
+
+      </div>
+
       <div style="
-        display:grid;
-        grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-        gap:18px;
+        margin-top:28px;
+        display:flex;
+        gap:12px;
       ">
-
-        <div class="grid">
-
-  <div>
-    <label>Descrição</label>
-
-    <input
-      id="novoServicoDescricao"
-      type="text"
-      placeholder="Ex: Hospedagem Premium"
-      style="
-        width:100%;
-        margin-top:8px;
-        padding:12px;
-        border:1px solid var(--borda);
-        border-radius:12px;
-      ">
-  </div>
-
-  <div>
-    <label>Valor (R$)</label>
-
-    <input
-      id="novoServicoValor"
-      type="number"
-      placeholder="0,00"
-      style="
-        width:100%;
-        margin-top:8px;
-        padding:12px;
-        border:1px solid var(--borda);
-        border-radius:12px;
-      ">
-  </div>
-
-  <div>
-    <label>Comissão (%)</label>
-
-    <input
-      id="novoServicoComissao"
-      type="number"
-      placeholder="0"
-      style="
-        width:100%;
-        margin-top:8px;
-        padding:12px;
-        border:1px solid var(--borda);
-        border-radius:12px;
-      ">
-  </div>
-
-  <div>
-    <label>Tipo</label>
-
-    <select
-      id="novoServicoTipo"
-      style="
-        width:100%;
-        margin-top:8px;
-        padding:12px;
-        border:1px solid var(--borda);
-        border-radius:12px;
-      ">
-
-      <option>Serviço Avulso</option>
-      <option>Diária/Pernoite Hotel</option>
-      <option>Creche</option>
-      <option>Home Care</option>
-      <option>Pet Sitting</option>
-      <option>Recreação / Dog Walker</option>
-      <option>Táxi Pet</option>
-
-    </select>
-  </div>
-
-  <div>
-    <label>Status</label>
-
-    <select
-      id="novoServicoStatus"
-      style="
-        width:100%;
-        margin-top:8px;
-        padding:12px;
-        border:1px solid var(--borda);
-        border-radius:12px;
-      ">
-
-      <option>Ativo</option>
-      <option>Inativo</option>
-      <option>Arquivado</option>
-
-    </select>
-  </div>
-
-  <div>
-    <label>Duração padrão</label>
-
-    <input
-      id="novoServicoDuracao"
-      type="text"
-      placeholder="Ex: 1 diária"
-      style="
-        width:100%;
-        margin-top:8px;
-        padding:12px;
-        border:1px solid var(--borda);
-        border-radius:12px;
-      ">
-  </div>
-
-  <div>
-    <label>Tipo de Conta</label>
-
-    <select
-      id="novoServicoConta"
-      style="
-        width:100%;
-        margin-top:8px;
-        padding:12px;
-        border:1px solid var(--borda);
-        border-radius:12px;
-      ">
-
-      <option>Selecione</option>
-      <option>Receita Operacional</option>
-      <option>Receita Recorrente</option>
-      <option>Despesa Fixa</option>
-      <option>Despesa Variável</option>
-
-    </select>
-  </div>
-
-  <div>
-    <label>Agendamento WEB?</label>
-
-    <select
-      id="novoServicoWeb"
-      style="
-        width:100%;
-        margin-top:8px;
-        padding:12px;
-        border:1px solid var(--borda);
-        border-radius:12px;
-      ">
-
-      <option>Sim</option>
-      <option selected>Não</option>
-
-    </select>
-  </div>
-
-  <div>
-    <label>Serviço Recorrente?</label>
-
-    <select
-      id="servicoRecorrente"
-      onchange="toggleRecorrencia()"
-      style="
-        width:100%;
-        margin-top:8px;
-        padding:12px;
-        border:1px solid var(--borda);
-        border-radius:12px;
-      ">
-
-      <option value="nao">Não</option>
-      <option value="sim">Sim</option>
-
-    </select>
-  </div>
-
-  <div id="boxFrequencia" style="display:none;">
-
-    <label>Frequência de Faturamento</label>
-
-    <select
-      id="novoServicoFrequencia"
-      style="
-        width:100%;
-        margin-top:8px;
-        padding:12px;
-        border:1px solid var(--borda);
-        border-radius:12px;
-      ">
-
-      <option>Diário</option>
-      <option>Semanal</option>
-      <option>Quinzenal</option>
-      <option>Mensal</option>
-      <option>Trimestral</option>
-      <option>Semestral</option>
-      <option>Anual</option>
-      <option>Bianual</option>
-
-    </select>
-
-  </div>
-
-  <div id="boxDataFaturamento" style="display:none;">
-
-    <label>Data de Faturamento</label>
-
-    <select
-      id="novoServicoDataFaturamento"
-      style="
-        width:100%;
-        margin-top:8px;
-        padding:12px;
-        border:1px solid var(--borda);
-        border-radius:12px;
-      ">
-
-      <option>Início do Serviço</option>
-      <option>Término do Serviço</option>
-
-    </select>
-
-  </div>
-
-</div>
-
-<div style="margin-top:24px;">
-
-  <label>Observações</label>
-
-  <textarea
-    id="novoServicoObs"
-    rows="5"
-    style="
-      width:100%;
-      margin-top:8px;
-      padding:12px;
-      border:1px solid var(--borda);
-      border-radius:12px;
-      resize:vertical;
-    "
-  ></textarea>
-
-</div>
-
-<div style="
-  margin-top:28px;
-  display:flex;
-  gap:12px;
-">
 
         <button
-  onclick="salvarNovoServico()"
-  style="
-    background:var(--rosa);
-    color:white;
-    border:none;
-    padding:14px 18px;
-    border-radius:12px;
-    cursor:pointer;
-    font-weight:600;
-  ">
-  Salvar Serviço
-</button>
+          onclick="salvarNovoServico()"
+          style="
+            background:var(--rosa);
+            color:white;
+            border:none;
+            padding:14px 18px;
+            border-radius:12px;
+            cursor:pointer;
+            font-weight:600;
+          ">
+          Salvar Serviço
+        </button>
 
         <button
           onclick="openModule(event,'Serviços')"
@@ -1027,23 +966,17 @@ function abrirCadastroServico(){
 
   `
 }
+
 function toggleRecorrencia(){
 
   const recorrente = document.getElementById('servicoRecorrente').value
 
-  const boxFreq = document.getElementById('boxFrequencia')
-  const boxData = document.getElementById('boxDataFaturamento')
+  const box = document.getElementById('boxFrequencia')
 
   if(recorrente === 'sim'){
-
-    boxFreq.style.display = 'block'
-    boxData.style.display = 'block'
-
+    box.style.display = 'block'
   }else{
-
-    boxFreq.style.display = 'none'
-    boxData.style.display = 'none'
-
+    box.style.display = 'none'
   }
 }
 function salvarNovoServico(){
