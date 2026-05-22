@@ -440,7 +440,7 @@ function openModule(event,module){
             </p>
           </div>
 
-          <button onclick="abrirNovoServico()"
+          <button onclick="abrirCadastroServico()"
             style="
               background:var(--rosa);
               color:white;
@@ -718,7 +718,192 @@ function excluirServico(index){
 
   renderServicos()
 }
+function abrirCadastroServico(){
 
+  document.getElementById('contentArea').innerHTML = `
+
+    <div class="module-box">
+
+      <div style="
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        margin-bottom:24px;
+      ">
+
+        <div>
+
+          <h3>Novo Serviço</h3>
+
+          <p style="margin-top:8px;">
+            Cadastro completo do serviço operacional.
+          </p>
+
+        </div>
+
+      </div>
+
+      <div style="
+        display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+        gap:18px;
+      ">
+
+        <div>
+          <label>Descrição</label>
+
+          <input type="text"
+            placeholder="Ex: Hospedagem Premium"
+            style="
+              width:100%;
+              margin-top:8px;
+              padding:12px;
+              border:1px solid var(--borda);
+              border-radius:12px;
+            ">
+        </div>
+
+        <div>
+          <label>Valor (R$)</label>
+
+          <input type="number"
+            placeholder="0,00"
+            style="
+              width:100%;
+              margin-top:8px;
+              padding:12px;
+              border:1px solid var(--borda);
+              border-radius:12px;
+            ">
+        </div>
+
+        <div>
+          <label>Comissão (%)</label>
+
+          <input type="number"
+            placeholder="0"
+            style="
+              width:100%;
+              margin-top:8px;
+              padding:12px;
+              border:1px solid var(--borda);
+              border-radius:12px;
+            ">
+        </div>
+
+        <div>
+          <label>Tipo</label>
+
+          <select
+            style="
+              width:100%;
+              margin-top:8px;
+              padding:12px;
+              border:1px solid var(--borda);
+              border-radius:12px;
+            ">
+
+            <option>Serviço Avulso</option>
+            <option>Diária/Pernoite Hotel</option>
+            <option>Creche</option>
+            <option>Home Care</option>
+            <option>Pet Sitting</option>
+            <option>Recreação / Dog Walker</option>
+            <option>Táxi Pet</option>
+
+          </select>
+        </div>
+
+        <div>
+          <label>Status</label>
+
+          <select
+            style="
+              width:100%;
+              margin-top:8px;
+              padding:12px;
+              border:1px solid var(--borda);
+              border-radius:12px;
+            ">
+
+            <option>Ativo</option>
+            <option>Inativo</option>
+            <option>Arquivado</option>
+
+          </select>
+        </div>
+
+        <div>
+          <label>Duração padrão</label>
+
+          <input type="text"
+            placeholder="Ex: 1 diária"
+            style="
+              width:100%;
+              margin-top:8px;
+              padding:12px;
+              border:1px solid var(--borda);
+              border-radius:12px;
+            ">
+        </div>
+
+      </div>
+
+      <div style="margin-top:24px;">
+
+        <label>Observações</label>
+
+        <textarea
+          rows="5"
+          style="
+            width:100%;
+            margin-top:8px;
+            padding:12px;
+            border:1px solid var(--borda);
+            border-radius:12px;
+            resize:vertical;
+          "
+        ></textarea>
+
+      </div>
+
+      <div style="
+        margin-top:28px;
+        display:flex;
+        gap:12px;
+      ">
+
+        <button
+          style="
+            background:var(--rosa);
+            color:white;
+            border:none;
+            padding:14px 18px;
+            border-radius:12px;
+            cursor:pointer;
+            font-weight:600;
+          ">
+          Salvar Serviço
+        </button>
+
+        <button
+          onclick="openModule(event,'Serviços')"
+          style="
+            background:var(--cinza-light);
+            border:none;
+            padding:14px 18px;
+            border-radius:12px;
+            cursor:pointer;
+          ">
+          Cancelar
+        </button>
+
+      </div>
+
+    </div>
+
+  `
+}
 </script>
 
 </body>
