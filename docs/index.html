@@ -749,232 +749,251 @@ function abrirCadastroServico(){
         gap:18px;
       ">
 
-        <div>
-          <label>Descrição</label>
+        <div class="grid">
 
-          <input type="text"
-            placeholder="Ex: Hospedagem Premium"
-            style="
-              width:100%;
-              margin-top:8px;
-              padding:12px;
-              border:1px solid var(--borda);
-              border-radius:12px;
-            ">
-        </div>
+  <div>
+    <label>Descrição</label>
 
-        <div>
-          <label>Valor (R$)</label>
-
-          <input type="number"
-            placeholder="0,00"
-            style="
-              width:100%;
-              margin-top:8px;
-              padding:12px;
-              border:1px solid var(--borda);
-              border-radius:12px;
-            ">
-        </div>
-
-        <div>
-          <label>Comissão (%)</label>
-
-          <input type="number"
-            placeholder="0"
-            style="
-              width:100%;
-              margin-top:8px;
-              padding:12px;
-              border:1px solid var(--borda);
-              border-radius:12px;
-            ">
-        </div>
-
-        <div>
-          <label>Tipo</label>
-
-          <select
-            style="
-              width:100%;
-              margin-top:8px;
-              padding:12px;
-              border:1px solid var(--borda);
-              border-radius:12px;
-            ">
-
-            <option>Serviço Avulso</option>
-            <option>Diária/Pernoite Hotel</option>
-            <option>Creche</option>
-            <option>Home Care</option>
-            <option>Pet Sitting</option>
-            <option>Recreação / Dog Walker</option>
-            <option>Táxi Pet</option>
-
-          </select>
-        </div>
-
-        <div>
-          <label>Status</label>
-
-          <select
-            style="
-              width:100%;
-              margin-top:8px;
-              padding:12px;
-              border:1px solid var(--borda);
-              border-radius:12px;
-            ">
-
-            <option>Ativo</option>
-            <option>Inativo</option>
-            <option>Arquivado</option>
-
-          </select>
-        </div>
-
-        <div>
-          <label>Duração padrão</label>
-
-          <input type="text"
-            placeholder="Ex: 1 diária"
-            style="
-              width:100%;
-              margin-top:8px;
-              padding:12px;
-              border:1px solid var(--borda);
-              border-radius:12px;
-            ">
-        </div>
-<div>
-  <label>Tipo de Conta</label>
-
-  <select
-    style="
-      width:100%;
-      margin-top:8px;
-      padding:12px;
-      border:1px solid var(--borda);
-      border-radius:12px;
-    ">
-
-    <option>Selecione</option>
-    <option>Receita Operacional</option>
-    <option>Receita Recorrente</option>
-    <option>Despesa Fixa</option>
-    <option>Despesa Variável</option>
-
-  </select>
-</div>
-
-<div>
-  <label>Agendamento WEB?</label>
-
-  <select
-    style="
-      width:100%;
-      margin-top:8px;
-      padding:12px;
-      border:1px solid var(--borda);
-      border-radius:12px;
-    ">
-
-    <option>Sim</option>
-    <option>Não</option>
-
-  </select>
-</div>
-
-<div>
-  <label>Serviço Recorrente?</label>
-
-  <select
-    id="servicoRecorrente"
-    onchange="toggleRecorrencia()"
-    style="
-      width:100%;
-      margin-top:8px;
-      padding:12px;
-      border:1px solid var(--borda);
-      border-radius:12px;
-    ">
-
-    <option value="nao">Não</option>
-    <option value="sim">Sim</option>
-
-  </select>
-</div>
-
-<div id="boxFrequencia" style="display:none;">
-
-  <label>Frequência de Faturamento</label>
-
-  <select
-    style="
-      width:100%;
-      margin-top:8px;
-      padding:12px;
-      border:1px solid var(--borda);
-      border-radius:12px;
-    ">
-
-    <option>Diário</option>
-    <option>Semanal</option>
-    <option>Quinzenal</option>
-    <option>Mensal</option>
-    <option>Trimestral</option>
-    <option>Semestral</option>
-    <option>Anual</option>
-    <option>Bianual</option>
-
-  </select>
-
-</div>
-
-<div id="boxDataFaturamento" style="display:none;">
-
-  <label>Data de Faturamento</label>
-
-  <select
-    style="
-      width:100%;
-      margin-top:8px;
-      padding:12px;
-      border:1px solid var(--borda);
-      border-radius:12px;
-    ">
-
-    <option>Início do Serviço</option>
-    <option>Término do Serviço</option>
-
-  </select>
-
-</div>
-      </div>
-
-      <div style="margin-top:24px;">
-
-        <label>Observações</label>
-
-        <textarea
-          rows="5"
-          style="
-            width:100%;
-            margin-top:8px;
-            padding:12px;
-            border:1px solid var(--borda);
-            border-radius:12px;
-            resize:vertical;
-          "
-        ></textarea>
-
-      </div>
-
-      <div style="
-        margin-top:28px;
-        display:flex;
-        gap:12px;
+    <input
+      id="novoServicoDescricao"
+      type="text"
+      placeholder="Ex: Hospedagem Premium"
+      style="
+        width:100%;
+        margin-top:8px;
+        padding:12px;
+        border:1px solid var(--borda);
+        border-radius:12px;
       ">
+  </div>
+
+  <div>
+    <label>Valor (R$)</label>
+
+    <input
+      id="novoServicoValor"
+      type="number"
+      placeholder="0,00"
+      style="
+        width:100%;
+        margin-top:8px;
+        padding:12px;
+        border:1px solid var(--borda);
+        border-radius:12px;
+      ">
+  </div>
+
+  <div>
+    <label>Comissão (%)</label>
+
+    <input
+      id="novoServicoComissao"
+      type="number"
+      placeholder="0"
+      style="
+        width:100%;
+        margin-top:8px;
+        padding:12px;
+        border:1px solid var(--borda);
+        border-radius:12px;
+      ">
+  </div>
+
+  <div>
+    <label>Tipo</label>
+
+    <select
+      id="novoServicoTipo"
+      style="
+        width:100%;
+        margin-top:8px;
+        padding:12px;
+        border:1px solid var(--borda);
+        border-radius:12px;
+      ">
+
+      <option>Serviço Avulso</option>
+      <option>Diária/Pernoite Hotel</option>
+      <option>Creche</option>
+      <option>Home Care</option>
+      <option>Pet Sitting</option>
+      <option>Recreação / Dog Walker</option>
+      <option>Táxi Pet</option>
+
+    </select>
+  </div>
+
+  <div>
+    <label>Status</label>
+
+    <select
+      id="novoServicoStatus"
+      style="
+        width:100%;
+        margin-top:8px;
+        padding:12px;
+        border:1px solid var(--borda);
+        border-radius:12px;
+      ">
+
+      <option>Ativo</option>
+      <option>Inativo</option>
+      <option>Arquivado</option>
+
+    </select>
+  </div>
+
+  <div>
+    <label>Duração padrão</label>
+
+    <input
+      id="novoServicoDuracao"
+      type="text"
+      placeholder="Ex: 1 diária"
+      style="
+        width:100%;
+        margin-top:8px;
+        padding:12px;
+        border:1px solid var(--borda);
+        border-radius:12px;
+      ">
+  </div>
+
+  <div>
+    <label>Tipo de Conta</label>
+
+    <select
+      id="novoServicoConta"
+      style="
+        width:100%;
+        margin-top:8px;
+        padding:12px;
+        border:1px solid var(--borda);
+        border-radius:12px;
+      ">
+
+      <option>Selecione</option>
+      <option>Receita Operacional</option>
+      <option>Receita Recorrente</option>
+      <option>Despesa Fixa</option>
+      <option>Despesa Variável</option>
+
+    </select>
+  </div>
+
+  <div>
+    <label>Agendamento WEB?</label>
+
+    <select
+      id="novoServicoWeb"
+      style="
+        width:100%;
+        margin-top:8px;
+        padding:12px;
+        border:1px solid var(--borda);
+        border-radius:12px;
+      ">
+
+      <option>Sim</option>
+      <option selected>Não</option>
+
+    </select>
+  </div>
+
+  <div>
+    <label>Serviço Recorrente?</label>
+
+    <select
+      id="servicoRecorrente"
+      onchange="toggleRecorrencia()"
+      style="
+        width:100%;
+        margin-top:8px;
+        padding:12px;
+        border:1px solid var(--borda);
+        border-radius:12px;
+      ">
+
+      <option value="nao">Não</option>
+      <option value="sim">Sim</option>
+
+    </select>
+  </div>
+
+  <div id="boxFrequencia" style="display:none;">
+
+    <label>Frequência de Faturamento</label>
+
+    <select
+      id="novoServicoFrequencia"
+      style="
+        width:100%;
+        margin-top:8px;
+        padding:12px;
+        border:1px solid var(--borda);
+        border-radius:12px;
+      ">
+
+      <option>Diário</option>
+      <option>Semanal</option>
+      <option>Quinzenal</option>
+      <option>Mensal</option>
+      <option>Trimestral</option>
+      <option>Semestral</option>
+      <option>Anual</option>
+      <option>Bianual</option>
+
+    </select>
+
+  </div>
+
+  <div id="boxDataFaturamento" style="display:none;">
+
+    <label>Data de Faturamento</label>
+
+    <select
+      id="novoServicoDataFaturamento"
+      style="
+        width:100%;
+        margin-top:8px;
+        padding:12px;
+        border:1px solid var(--borda);
+        border-radius:12px;
+      ">
+
+      <option>Início do Serviço</option>
+      <option>Término do Serviço</option>
+
+    </select>
+
+  </div>
+
+</div>
+
+<div style="margin-top:24px;">
+
+  <label>Observações</label>
+
+  <textarea
+    id="novoServicoObs"
+    rows="5"
+    style="
+      width:100%;
+      margin-top:8px;
+      padding:12px;
+      border:1px solid var(--borda);
+      border-radius:12px;
+      resize:vertical;
+    "
+  ></textarea>
+
+</div>
+
+<div style="
+  margin-top:28px;
+  display:flex;
+  gap:12px;
+">
 
         <button
   onclick="salvarNovoServico()"
@@ -1028,6 +1047,26 @@ function toggleRecorrencia(){
   }
 }
 function salvarNovoServico(){
+
+  const nome = document.getElementById('nomeServico').value
+  const valor = document.getElementById('valorServico').value
+  const tipo = document.getElementById('tipoServico').value
+
+  if(!nome || !valor){
+
+    alert('Preencha os campos obrigatórios.')
+
+    return
+  }
+
+  servicos.push({
+
+    nome:nome,
+    valor:valor,
+    tipo:tipo,
+    status:'Ativo'
+
+  })
 
   alert('Serviço salvo com sucesso 💛')
 
