@@ -981,24 +981,17 @@ function toggleRecorrencia(){
 }
 function salvarNovoServico(){
 
-  const nome = document.getElementById('novoServicoDescricao').value
-  const valor = document.getElementById('novoServicoValor').value
-  const tipo = document.getElementById('novoServicoTipo').value
-  const status = document.getElementById('novoServicoStatus').value
-  const comissao = document.getElementById('novoServicoComissao').value
-  const duracao = document.getElementById('novoServicoDuracao').value
-  const tipoConta = document.getElementById('novoServicoConta').value
-  const web = document.getElementById('novoServicoWeb').value
-  const recorrente = document.getElementById('servicoRecorrente').value
-  const frequencia = document.getElementById('novoServicoFrequencia')
-    ? document.getElementById('novoServicoFrequencia').value
-    : ''
-
-  const dataFaturamento = document.getElementById('novoServicoDataFaturamento')
-    ? document.getElementById('novoServicoDataFaturamento').value
-    : ''
-
-  const observacoes = document.getElementById('novoServicoObs').value
+  const nome = document.getElementById('novoServicoDescricao')?.value || ''
+  const valor = document.getElementById('novoServicoValor')?.value || ''
+  const tipo = document.getElementById('novoServicoTipo')?.value || ''
+  const status = document.getElementById('novoServicoStatus')?.value || ''
+  const comissao = document.getElementById('novoServicoComissao')?.value || ''
+  const duracao = document.getElementById('novoServicoDuracao')?.value || ''
+  const tipoConta = document.getElementById('novoServicoConta')?.value || ''
+  const web = document.getElementById('novoServicoWeb')?.value || ''
+  const recorrente = document.getElementById('servicoRecorrente')?.value || ''
+  const frequencia = document.getElementById('novoServicoFrequencia')?.value || ''
+  const observacoes = document.getElementById('novoServicoObs')?.value || ''
 
   if(!nome || !valor){
 
@@ -1019,7 +1012,6 @@ function salvarNovoServico(){
     web:web,
     recorrente:recorrente,
     frequencia:frequencia,
-    dataFaturamento:dataFaturamento,
     observacoes:observacoes
 
   })
