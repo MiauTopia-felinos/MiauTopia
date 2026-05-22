@@ -977,17 +977,18 @@ function abrirCadastroServico(){
       ">
 
         <button
-          style="
-            background:var(--rosa);
-            color:white;
-            border:none;
-            padding:14px 18px;
-            border-radius:12px;
-            cursor:pointer;
-            font-weight:600;
-          ">
-          Salvar Serviço
-        </button>
+  onclick="salvarNovoServico()"
+  style="
+    background:var(--rosa);
+    color:white;
+    border:none;
+    padding:14px 18px;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:600;
+  ">
+  Salvar Serviço
+</button>
 
         <button
           onclick="openModule(event,'Serviços')"
@@ -1025,6 +1026,19 @@ function toggleRecorrencia(){
     boxData.style.display = 'none'
 
   }
+}
+function salvarNovoServico(){
+
+  alert('Serviço salvo com sucesso 💛')
+
+  openModule(
+    {
+      currentTarget:document.querySelector(
+        '.menu-item[onclick*="Serviços"]'
+      )
+    },
+    'Serviços'
+  )
 }
 </script>
 
