@@ -405,7 +405,8 @@
 
 <script>
 
-let servicos = []
+let servicos =
+  JSON.parse(localStorage.getItem('servicos')) || []
 
 function openModule(event,module){
 
@@ -1050,7 +1051,10 @@ function salvarNovoServico(){
     observacoes:observacoes
 
   })
-
+localStorage.setItem(
+  'servicos',
+  JSON.stringify(servicos)
+)
   alert('Serviço salvo com sucesso 💛')
 
   openModule(
@@ -1061,6 +1065,23 @@ function salvarNovoServico(){
     },
     'Serviços'
   )
+}
+function excluirServico(index){
+
+  const confirmar = confirm(
+    'Deseja realmente excluir este serviço?'
+  )
+
+  if(!confirmar) return
+
+  servicos.splice(index,1)
+
+  localStorage.setItem(
+    'servicos',
+    JSON.stringify(servicos)
+  )
+
+  renderServicos()
 }
 </script>
 
