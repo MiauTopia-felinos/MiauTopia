@@ -846,7 +846,110 @@ function abrirCadastroServico(){
               border-radius:12px;
             ">
         </div>
+<div>
+  <label>Tipo de Conta</label>
 
+  <select
+    style="
+      width:100%;
+      margin-top:8px;
+      padding:12px;
+      border:1px solid var(--borda);
+      border-radius:12px;
+    ">
+
+    <option>Selecione</option>
+    <option>Receita Operacional</option>
+    <option>Receita Recorrente</option>
+    <option>Despesa Fixa</option>
+    <option>Despesa Variável</option>
+
+  </select>
+</div>
+
+<div>
+  <label>Agendamento WEB?</label>
+
+  <select
+    style="
+      width:100%;
+      margin-top:8px;
+      padding:12px;
+      border:1px solid var(--borda);
+      border-radius:12px;
+    ">
+
+    <option>Sim</option>
+    <option>Não</option>
+
+  </select>
+</div>
+
+<div>
+  <label>Serviço Recorrente?</label>
+
+  <select
+    id="servicoRecorrente"
+    onchange="toggleRecorrencia()"
+    style="
+      width:100%;
+      margin-top:8px;
+      padding:12px;
+      border:1px solid var(--borda);
+      border-radius:12px;
+    ">
+
+    <option value="nao">Não</option>
+    <option value="sim">Sim</option>
+
+  </select>
+</div>
+
+<div id="boxFrequencia" style="display:none;">
+
+  <label>Frequência de Faturamento</label>
+
+  <select
+    style="
+      width:100%;
+      margin-top:8px;
+      padding:12px;
+      border:1px solid var(--borda);
+      border-radius:12px;
+    ">
+
+    <option>Diário</option>
+    <option>Semanal</option>
+    <option>Quinzenal</option>
+    <option>Mensal</option>
+    <option>Trimestral</option>
+    <option>Semestral</option>
+    <option>Anual</option>
+    <option>Bianual</option>
+
+  </select>
+
+</div>
+
+<div id="boxDataFaturamento" style="display:none;">
+
+  <label>Data de Faturamento</label>
+
+  <select
+    style="
+      width:100%;
+      margin-top:8px;
+      padding:12px;
+      border:1px solid var(--borda);
+      border-radius:12px;
+    ">
+
+    <option>Início do Serviço</option>
+    <option>Término do Serviço</option>
+
+  </select>
+
+</div>
       </div>
 
       <div style="margin-top:24px;">
@@ -903,6 +1006,25 @@ function abrirCadastroServico(){
     </div>
 
   `
+}
+function toggleRecorrencia(){
+
+  const recorrente = document.getElementById('servicoRecorrente').value
+
+  const boxFreq = document.getElementById('boxFrequencia')
+  const boxData = document.getElementById('boxDataFaturamento')
+
+  if(recorrente === 'sim'){
+
+    boxFreq.style.display = 'block'
+    boxData.style.display = 'block'
+
+  }else{
+
+    boxFreq.style.display = 'none'
+    boxData.style.display = 'none'
+
+  }
 }
 </script>
 
