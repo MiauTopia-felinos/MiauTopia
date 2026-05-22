@@ -900,14 +900,38 @@ function abrirCadastroServico(){
               border-radius:12px;
             ">
 
-            <option>Mensal</option>
-            <option>Semanal</option>
-            <option>Anual</option>
+            <option>Diário</option>
+<option>Semanal</option>
+<option>Quinzenal</option>
+<option>Mensal</option>
+<option>Trimestral</option>
+<option>Semestral</option>
+<option>Anual</option>
+<option>Bianual</option>
 
           </select>
 
         </div>
+<div id="boxDataFaturamento" style="display:none;">
 
+  <label>Data de Faturamento</label>
+
+  <select
+    id="novoServicoDataFaturamento"
+    style="
+      width:100%;
+      margin-top:8px;
+      padding:12px;
+      border:1px solid var(--borda);
+      border-radius:12px;
+    ">
+
+    <option>Início do Serviço</option>
+    <option>Término do Serviço</option>
+
+  </select>
+
+</div>
       </div>
 
       <div style="margin-top:24px;">
@@ -969,14 +993,25 @@ function abrirCadastroServico(){
 
 function toggleRecorrencia(){
 
-  const recorrente = document.getElementById('servicoRecorrente').value
+  const recorrente =
+    document.getElementById('servicoRecorrente').value
 
-  const box = document.getElementById('boxFrequencia')
+  const boxFreq =
+    document.getElementById('boxFrequencia')
+
+  const boxData =
+    document.getElementById('boxDataFaturamento')
 
   if(recorrente === 'sim'){
-    box.style.display = 'block'
+
+    boxFreq.style.display = 'block'
+    boxData.style.display = 'block'
+
   }else{
-    box.style.display = 'none'
+
+    boxFreq.style.display = 'none'
+    boxData.style.display = 'none'
+
   }
 }
 function salvarNovoServico(){
